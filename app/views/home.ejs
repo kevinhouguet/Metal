@@ -1,5 +1,45 @@
 <%- include('./partials/header') %>
 
-<h1>Coucou</h1>
+<div class="hero">
+  <header class="container">
+    <hgroup>
+      <div class="logo"><img src="./img/logo.svg" alt="logo"><div class="logo_title">Copper Fox</div></div>
+      <p>Nous rachetons vos métaux à prix compétitif.</p>
+    </hgroup>
+  </header>  
+</div>
+
+<main class="container">
+  <form class="search">
+    <input type="search" id="search" name="search" placeholder="Search">
+  </form>
+
+  <section class="page_content">
+    <details>
+      <summary>Cuivre</summary>
+      <article>
+        <header>Cuivre dénudé</header>
+        <body>
+          <ul>
+            <li>metal : <span class="metal_type">cuivre</span></li>
+            <li>prix du marché : <span class="metal_market-price">6.99</span></li>
+            <li>prix manuel : <span class="metal_manuel-price">6.00</span></li>
+          </ul>
+        </body>
+      </article>
+      <article>
+        <header>Cuivre dénudé</header>
+        <body>
+          <ul>
+            <li>metal : <span class="metal_type">cuivre</span></li>
+            <li>prix du marché : <span class="metal_market-price">6.99</span></li>
+            <li>prix manuel : <span class="metal_manuel-price">6.00</span></li>
+          </ul>
+        </body>
+      </article>
+    </details>
+  </section>
+
+</main>
 
 <%- include('./partials/footer') %>
