@@ -15,7 +15,25 @@
   </form>
 
   <section class="page_content">
-    <details>
+    <% metals.forEach(metal => { %>
+      <details>
+        <summary><%= metal.name %> <em class="nb_articles">(<%= metal.items.length %> articles)</em></summary>
+        <% metal.items.forEach((item, index) => { %>
+          <article>
+            <header>#<%= index+1 %> <%= item.name %></header>
+            <body>
+              <ul>
+                <li>metal : <span class="metal_type"><%= item.metalName %></span></li>
+                <li>prix du marché : <span class="metal_market-price">0.00</span></li>
+                <li>notre prix : <span class="metal_manuel-price"><%= item.price %>€</span></li>
+              </ul>
+            </body>
+          </article>
+        <% }) %>
+      </details>
+    <% }) %>
+    
+    <!-- <details>
       <summary>Cuivre</summary>
       <article>
         <header>Cuivre dénudé</header>
@@ -37,7 +55,7 @@
           </ul>
         </body>
       </article>
-    </details>
+    </details> -->
   </section>
 
 </main>
