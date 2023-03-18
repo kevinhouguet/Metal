@@ -2,9 +2,8 @@ const db = require('./db');
 
 async function getAllItemsWData() {
   const query = {
-    text: ` SELECT "item".*, "metal"."name" as "metalName", "manuelprice"."price" as "prixManuel"  FROM "item"
-            INNER JOIN "metal" ON "metal"."id" = "item"."metal_id"
-            INNER JOIN "manuelprice" ON "manuelprice"."id" = "item"."price_id";`,
+    text: ` SELECT "item".*, "metal"."name" as "metalName" FROM "item"
+            INNER JOIN "metal" ON "metal"."id" = "item"."metal_id";`,
   };
 
   const result = await db.query(query);
@@ -22,9 +21,8 @@ async function getAllMetals() {
 
 async function getItemsByMetalId(id) {
   const query = {
-    text: ` SELECT "item".*, "manuelprice"."price", "metal"."name" as "metalName"
+    text: ` SELECT "item".*, "metal"."name" as "metalName"
             FROM "item"
-            INNER JOIN "manuelprice" ON "item"."price_id" = "manuelprice"."id"
             INNER JOIN "metal" ON "metal"."id" = "item"."metal_id"
             WHERE "item"."metal_id" = $1;`,
     values: [id],
