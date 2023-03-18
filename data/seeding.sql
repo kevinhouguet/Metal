@@ -12,20 +12,13 @@ VALUES
 ('bronze'),
 ('laiton');
 
-INSERT INTO "manuelprice"
-("price")
-VALUES
-(5.00),
-(6.50),
-(6.70),
-(6.00);
 
 INSERT INTO "item"
-("name","metal_id","price_id")
+("name","metal_id","price", "price_updated_at")
 VALUES
-('cuivre dénudé',1, 1),
-('Cuivre élec dénudé souple',1,2),
-('cuivre millberry',1,3),
-('cuivre mélé',1,4);
+('cuivre dénudé',1,5.00, NOW()),
+('Cuivre élec dénudé souple',1, 6.50, NOW()),
+('cuivre millberry',1, 6.70, NOW()),
+('cuivre mélé',1, 6.00, NOW());
 
 COMMIT;

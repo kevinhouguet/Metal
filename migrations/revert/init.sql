@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE "metal","manuelprice","item";
+DROP TABLE "metal","item";
 
 COMMIT;
