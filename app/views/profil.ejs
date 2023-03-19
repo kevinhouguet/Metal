@@ -1,0 +1,22 @@
+<%- include('./partials/headerAdmin') %>
+
+<main class="container">
+  <% if (locals.processed) { %>
+   <h1>TEST <%= processed.id %></h1>
+  <% } %>
+
+  <form method="PATCH" action="/admin/profil">
+    <label for="password">Current password</label>
+    <input id="current-password" type="password" name="currentPassword" placeholder="older password" required>
+    <label for="password">New Password</label>
+    <input id="new-password" type="password" name="newPassword" placeholder="new password" required>
+    <label for="password">Confirm Password</label>
+    <input id="confirm-password" type="password" name="confirmPassword" placeholder="password to confirm" required>
+    <p class="confirm-password-error hidden">Les deux mots de passe doivent être identique</p>
+    <!-- Button -->
+    <button type="submit">Submit</button>
+  </form>
+
+</main>
+
+<%- include('./partials/footer') %>

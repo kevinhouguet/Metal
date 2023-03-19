@@ -43,9 +43,24 @@ async function getUserByLogin(login) {
   return result.rows[0];
 }
 
+async function updatePassword(password, login) {
+  const query = {
+    text: ` UPDATE "user"
+            SET "password" = $1,
+            "updated_at" = now()
+            WHERE "user"."login" = $2
+            RETURNING "id";`,
+    values: [password, login],
+  };
+
+  const result = await db.query(query);
+  return result.rows[0];
+}
+
 module.exports = {
   getAllItemsWData,
   getAllMetals,
   getItemsByMetalId,
   getUserByLogin,
+  updatePassword,
 };
