@@ -1,5 +1,15 @@
 <%- include('./partials/header') %>
 <main class="container">
+<% if (locals.err) { %>
+  <article>
+    <header>
+     <%= err.message %>
+    </header>
+    <body>
+      <%= err.description %>
+    </body>
+  </article>
+<% } %>
   <form method="POST" action="/admin/signin">
     <label for="login">Login</label>
     <input type="text" id="login" name="login" placeholder="your login" required>
