@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
+const multer = require('multer');
 const router = require('./routers');
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(session({
 }));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(multer().none());
 
 app.use(router);
 
