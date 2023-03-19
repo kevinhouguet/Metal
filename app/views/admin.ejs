@@ -1,8 +1,46 @@
 <%- include('./partials/headerAdmin') %>
 
-<main class="container">
+<main class="container admin-page">
   <h1>Page admin - Vous vous êtes authentifié</h1>
-  <a href="/admin/signout">Se déconnecter</a>
+
+  <details>
+    <summary>Metals</summary>
+    <ul>
+      <% metals.forEach(metal => { %>
+        <li>
+          <span>
+            <%= metal.name.substring(0,17) %>
+            <% if (metal.name.length > 17){ %>
+              <em data-tooltip="<%= metal.name.substring(17,metal.name.length) %>">...</em>
+            <% } %>
+          </span>
+          <span>
+            <a href="/admin/delMetal/<%= metal.id %>" role="button" class="secondary">Supprimer</a> 
+            <a href="/admin/editMetal/<%= metal.id %>" role="button">Editer</a>
+          </span>
+        </li>     
+      <% }) %>
+    </ul>
+  </details>
+  <details>
+    <summary>Items</summary>
+    <ul>
+      <% items.forEach(item => { %>
+        <li>
+          <span>
+            <%= item.name.substring(0,17) %>
+              <% if (item.name.length > 17){ %>
+                <em data-tooltip="<%= item.name %>">...</em>
+            <% } %> 
+          </span>
+          <span>
+            <a href="/admin/delMetal/<%= item.id %>" role="button" class="secondary">Supprimer</a> 
+            <a href="/admin/editNetal/<%= item.id %>" role="button">Editer</a>
+          </span>
+        </li>       
+      <% }) %>
+    </ul>
+  </details>
 </main>
 
 <%- include('./partials/footer') %>

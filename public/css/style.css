@@ -69,3 +69,13 @@
 .admin-nav a[role="button"]{
   display: block;
 }
+
+.admin-page details summary{
+
+}
+
+.admin-page details li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

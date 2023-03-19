@@ -1,0 +1,12 @@
+<%- include('./partials/headerAdmin') %>
+
+<main class="container">
+  <form method="POST" action="/admin/addMetal">
+    <label for="name">Nom</label>
+    <input type="text" id="name" name="name" placeholder="Nom du nouveau metal" required>
+  
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
+<%- include('./partials/footer') %>
