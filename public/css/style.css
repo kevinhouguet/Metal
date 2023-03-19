@@ -32,3 +32,40 @@
   font-weight: bold;
   color: #5D4221;
 }
+.admin-header{
+    padding: 1rem;
+}
+/* .admin-header:not([data-theme=dark]){
+    padding: 1rem;
+    background-color: #11191f;
+} */
+.admin-header hgroup{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+.admin-header .logo{
+  font-size: 1rem;
+  font-weight: 700;
+}
+.admin-header .menu{
+  border-radius: 20px;
+  border: 1px solid;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+.hidden{
+  display: none;
+}
+.overflow{
+  overflow: hidden;
+}
+
+.admin-nav{
+  height: calc(100vh - 83px);
+}
+
+.admin-nav a[role="button"]{
+  display: block;
+}
