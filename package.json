@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon app",
+    "debug:dev": "set DEBUG=express-session & npx nodemon app",
     "start": "node app"
   },
   "repository": {
@@ -19,9 +20,11 @@
   },
   "homepage": "https://github.com/kevinhouguet/Metal#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "pg": "^8.10.0"
   },
   "devDependencies": {

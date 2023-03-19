@@ -2,3 +2,4 @@
 %project=migrations
 
 init 2023-03-17T18:00:12Z 'Kevin <'k.houguet@gmail.com'> # init db
+user_table 2023-03-19T09:06:30Z 'Kevin <'k.houguet@gmail.com'> # add an user table for authentication

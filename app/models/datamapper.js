@@ -32,8 +32,20 @@ async function getItemsByMetalId(id) {
   return result.rows;
 }
 
+async function getUserByLogin(login) {
+  const query = {
+    text: ` SELECT * FROM "user"
+            WHERE "user"."login" = $1;`,
+    values: [login],
+  };
+
+  const result = await db.query(query);
+  return result.rows[0];
+}
+
 module.exports = {
   getAllItemsWData,
   getAllMetals,
   getItemsByMetalId,
+  getUserByLogin,
 };

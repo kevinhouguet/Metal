@@ -9,7 +9,6 @@ async function getHome(req, res) {
       metal.items = items;
     }
   }));
-  console.log(metals);
   res.status(200).render('home', { metals });
 }
 
