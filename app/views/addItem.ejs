@@ -1,0 +1,21 @@
+<%- include('./partials/headerAdmin') %>
+
+<main class="container">
+  <form method="POST" action="/admin/addItem">
+    <label for="name">Nom</label>
+    <input type="text" id="name" name="name" placeholder="Nom du nouvel item" required>
+    <label for="metalId">Métal</label>
+    <select id="metal" name="metalId" required>
+      <option value="" selected>Select a metal...</option>
+        <% metals.forEach(metal => { %>
+          <option value="<%= metal.id %>"><%= metal.name %></option>
+        <% }) %>
+    </select>
+    <label for="price">Prix</label>
+    <input type="number" name="price" id="price" step="0.01" min="0">
+  
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
+<%- include('./partials/footer') %>
