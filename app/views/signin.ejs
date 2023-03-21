@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 <main class="container">
-<% if (locals.err) { %>
+<% if (locals.err && locals.err.route === 'signin') { %>
   <article>
     <header>
      <%= err.message %>

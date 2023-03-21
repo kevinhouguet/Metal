@@ -1,22 +1,24 @@
 const db = require('./db');
 
-async function getAllItemsWData() {
+async function getAllMetals() {
   const query = {
-    text: ` SELECT "item".*, "metal"."name" as "metalName" FROM "item"
-            INNER JOIN "metal" ON "metal"."id" = "item"."metal_id";`,
+    text: ` SELECT * FROM "metal" 
+            LEFT JOIN (SELECT "metal_id",count(*) as "nb" FROM "item" GROUP BY "metal_id") "nbItems" ON "nbItems"."metal_id" = "id"
+            ORDER BY "nbItems"."nb", "metal"."name";`,
   };
 
   const result = await db.query(query);
   return result.rows;
 }
 
-async function getAllMetals() {
+async function getMetalById(id) {
   const query = {
-    text: ' SELECT * FROM "metal";',
+    text: ' SELECT * FROM "metal" WHERE "id" =$1;',
+    values: [id],
   };
 
   const result = await db.query(query);
-  return result.rows;
+  return result.rows[0];
 }
 
 async function getItemsByMetalId(id) {
@@ -24,7 +26,8 @@ async function getItemsByMetalId(id) {
     text: ` SELECT "item".*, "metal"."name" as "metalName"
             FROM "item"
             INNER JOIN "metal" ON "metal"."id" = "item"."metal_id"
-            WHERE "item"."metal_id" = $1;`,
+            WHERE "item"."metal_id" = $1
+            ORDER BY "metal"."name";`,
     values: [id],
   };
 
@@ -82,61 +85,14 @@ async function updateMetal(name, id) {
 
 async function deleteMetal(id) {
   const query = {
-    text: 'DELETE "metal" WHERE "id" = $1',
+    text: 'DELETE FROM "metal" WHERE "id" = $1',
     values: [id],
   };
 
   await db.query(query);
 }
 
-async function addItem(name, price, update, metalId) {
-  const query = {
-    text: ` INSERT INTO "item" ("name", "price", "price_updated_at", "metal_id")
-            VALUES ($1, $2, $3,$4)
-            RETURNING *;`,
-    values: [name, price, update, metalId],
-  };
-
-  const result = await db.query(query);
-  return result.rows[0];
-}
-
-async function updateItemName(name) {
-  const query = {
-    text: ` UPDATE "item" 
-            SET "name" = $1
-            RETURNING *;`,
-    values: [name],
-  };
-
-  const result = await db.query(query);
-  return result.rows[0];
-}
-async function updateItemMetalId(metalId) {
-  const query = {
-    text: ` UPDATE "item" 
-            SET "metal_id" = $1
-            RETURNING *;`,
-    values: [metalId],
-  };
-
-  const result = await db.query(query);
-  return result.rows[0];
-}
-async function updateItemPrice(price) {
-  const query = {
-    text: ` UPDATE "item" 
-            SET "price" =$1, "price_updated_at" = now())
-            RETURNING *;`,
-    values: [price],
-  };
-
-  const result = await db.query(query);
-  return result.rows[0];
-}
-
 module.exports = {
-  getAllItemsWData,
   getAllMetals,
   getItemsByMetalId,
   getUserByLogin,
@@ -144,8 +100,5 @@ module.exports = {
   addMetal,
   updateMetal,
   deleteMetal,
-  addItem,
-  updateItemName,
-  updateItemMetalId,
-  updateItemPrice,
+  getMetalById,
 };

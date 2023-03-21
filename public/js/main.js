@@ -5,6 +5,9 @@ const app = {
     if (window.location.pathname === '/admin/profil') {
       app.checkPassword();
     }
+    if (window.location.pathname === '/admin/updateItem') {
+      app.updateItemLayout();
+    }
   },
   menuBurger() {
     const menuElem = document.querySelector('.menu');
@@ -41,6 +44,38 @@ const app = {
     await fetch('http://localhost:3000/admin/profil', {
       method: 'PATCH',
       body: userObj,
+    });
+  },
+  updateItemLayout() {
+    const itemSelectElem = document.querySelector('#itemId');
+
+    // OnChange event on select item changes
+    itemSelectElem.addEventListener('change', (event) => {
+      // Selection of all options to retrieve metal id, name and price
+      const optionsItemElem = event.currentTarget.querySelectorAll('option');
+      let metalId = 0;
+      optionsItemElem.forEach((itemElem) => {
+        if (itemElem.value === event.currentTarget.value) {
+          // retrieve and change dynamically the name of item
+          const nameItemElem = document.querySelector('#name');
+          nameItemElem.value = itemElem.textContent;
+
+          // retrieve and change dynamically the price of item
+          const priceItemElem = document.querySelector('#price');
+          priceItemElem.value = itemElem.dataset.price;
+
+          // retrieve and return the metalId
+          metalId = itemElem.dataset.metalId;
+        }
+      });
+      const metalSelectElem = document.querySelector('#metalId');
+      // selection of all options about metal Selection to change select metal dynamycally
+      const optionsMetalElem = metalSelectElem.querySelectorAll('option');
+      optionsMetalElem.forEach((metalElem) => {
+        if (metalElem.value === metalId) {
+          metalElem.selected = true;
+        }
+      });
     });
   },
 };

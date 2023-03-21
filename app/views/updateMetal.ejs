@@ -1,0 +1,25 @@
+<%- include('./partials/headerAdmin') %>
+
+<main class="container">
+  <form method="POST" action="/admin/updateMetal">
+    <label for="metal">Metaux</label>
+    <select id="metal" name="id" required <%= metals.length === 1 ? 'disabled' : ''%>>
+        <option value="" selected>Select a metal...</option>
+        <% if (metals.length === 1) { %>
+          <option value="<%= metals[0].id %>" selected><%= metals[0].name %></option>
+          <input type="hidden" value="<%= metals[0].id %>" name="id">
+        <% } else {%>
+          <% metals.forEach(metal => { %>
+            <option value="<%= metal.id %>"><%= metal.name %></option>
+          <% }) %>
+        <% }%>
+      </select>
+    
+    <label for="name">Nouveau nom à appliquer</label>
+    <input type="text" id="name" name="name" placeholder="Nom du nouveau metal" required>
+  
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
+<%- include('./partials/footer') %>

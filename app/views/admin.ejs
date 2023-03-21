@@ -16,7 +16,7 @@
           </span>
           <span>
             <a href="/admin/delMetal/<%= metal.id %>" role="button" class="secondary">Supprimer</a> 
-            <a href="/admin/editMetal/<%= metal.id %>" role="button">Editer</a>
+            <a href="/admin/updateMetal/<%= metal.id %>" role="button">Editer</a>
           </span>
         </li>     
       <% }) %>
@@ -34,8 +34,8 @@
             <% } %> 
           </span>
           <span>
-            <a href="/admin/delMetal/<%= item.id %>" role="button" class="secondary">Supprimer</a> 
-            <a href="/admin/editNetal/<%= item.id %>" role="button">Editer</a>
+            <a href="/admin/delItem/<%= item.id %>" role="button" class="secondary">Supprimer</a> 
+            <a href="/admin/updateItem/<%= item.id %>" role="button">Editer</a>
           </span>
         </li>       
       <% }) %>

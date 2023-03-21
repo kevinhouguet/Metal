@@ -1,0 +1,18 @@
+<%- include('./partials/headerAdmin') %>
+
+<main class="container">
+  <article>
+    <header>
+      Error: <%= err.name %>
+    </header>
+    <body>
+      <%= err.message %>
+      <%= err.description %>
+    </body>
+    <footer>
+       <a href="<%= url %>">Revenir à la page précédente</a>
+    </footer>
+  </article>
+</main>
+
+<%- include('./partials/footer') %>
