@@ -58,9 +58,22 @@ async function updateItem(req, res) {
   res.redirect('/admin');
 }
 
+async function delItemForm(req, res) {
+  const items = await itemDatamapper.getAllItemsWData();
+  res.render('delItem', { items });
+}
+
+async function delItem(req, res) {
+  const id = req.body.id || req.params.id;
+  await itemDatamapper.deleteItem(parseInt(id, 10));
+  res.redirect('/admin');
+}
+
 module.exports = {
   addItemForm,
   addItem,
   updateItemForm,
   updateItem,
+  delItemForm,
+  delItem,
 };

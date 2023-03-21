@@ -1,0 +1,17 @@
+<%- include('./partials/headerAdmin') %>
+
+<main class="container">
+  <form method="POST" action="/admin/delItem">
+    <label for="item">Item</label>
+    <select id="item" name="id" required>
+        <option value="" selected>Select an item to delete...</option>
+      <% items.forEach(item => { %>
+        <option value="<%= item.id %>"><%= item.name %></option>
+      <% }) %>
+      </select>
+  
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
+<%- include('./partials/footer') %>

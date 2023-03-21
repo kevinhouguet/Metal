@@ -22,7 +22,7 @@ router.get('/updateMetal/:id', authenticationController.isAuthenticated, errorHa
 router.post('/updateMetal', authenticationController.isAuthenticated, errorHandler(metalController.updateMetal));
 
 router.get('/delMetal', authenticationController.isAuthenticated, errorHandler(metalController.delMetalForm));
-router.get('/delMetal/:id', authenticationController.isAuthenticated, errorHandler(metalController.delMetalForm));
+router.get('/delMetal/:id', authenticationController.isAuthenticated, errorHandler(metalController.delMetal));
 router.post('/delMetal', authenticationController.isAuthenticated, errorHandler(metalController.delMetal));
 
 router.get('/addItem', authenticationController.isAuthenticated, errorHandler(itemController.addItemForm));
@@ -31,5 +31,9 @@ router.post('/addItem', authenticationController.isAuthenticated, errorHandler(i
 router.get('/updateItem', authenticationController.isAuthenticated, errorHandler(itemController.updateItemForm));
 router.get('/updateItem/:id', authenticationController.isAuthenticated, errorHandler(itemController.updateItemForm));
 router.post('/updateItem', authenticationController.isAuthenticated, errorHandler(itemController.updateItem));
+
+router.get('/delItem', authenticationController.isAuthenticated, errorHandler(itemController.delItemForm));
+router.get('/delItem/:id', authenticationController.isAuthenticated, errorHandler(itemController.delItem));
+router.post('/delItem', authenticationController.isAuthenticated, errorHandler(itemController.delItem));
 
 module.exports = router;
