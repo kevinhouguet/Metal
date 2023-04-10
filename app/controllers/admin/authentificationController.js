@@ -76,9 +76,7 @@ async function updateProfil(req, res) {
 
   const passwordHashed = await bcrypt.hash(user.newPassword, saltRounds);
 
-  const processed = await datamapper.updatePassword(passwordHashed, login);
-
-  // res.locals.processed = processed;
+  await datamapper.updatePassword(passwordHashed, userInDb.id);
 
   res.status(200).render('profil');
 }
